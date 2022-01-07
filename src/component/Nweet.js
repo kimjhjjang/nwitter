@@ -11,7 +11,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     const [newNweet, setNewNweet] = useState(nweetObj.text);
 
     const onDeleteClick = async () => {
-    const ok = window.confirm("are you sure?");
+    const ok = window.confirm("삭제 하시겠습니까?");
         //리터럴
     
         if (ok) {
@@ -53,10 +53,10 @@ const Nweet = ({ nweetObj, isOwner }) => {
                                 Cancel
                             </span></>
                         : <>
+                               {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt={nweetObj.text}/>}
                             <h4>{nweetObj.text}</h4>
-                            {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} style={{width:"250px", height:"250px"}} alt={nweetObj.text}/>}
                             {isOwner && (
-                                <div class="nweet__actions">
+                                <div className="nweet__actions">
                                     <span onClick={onDeleteClick}>
                                         <FontAwesomeIcon icon={faTrash} />
                                     </span>
@@ -64,8 +64,6 @@ const Nweet = ({ nweetObj, isOwner }) => {
                                         <FontAwesomeIcon icon={faPencilAlt} />
                                     </span>
                                 </div>
-                                
-                                
                             )
                             }
                         </>

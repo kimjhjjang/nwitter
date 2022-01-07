@@ -4,7 +4,6 @@ import { collection, getDocs, onSnapshot, query, orderBy } from "firebase/firest
 import Nweet from "component/Nweet";
 import NweetFactory from "component/NweetFactory";
 
-
 const Home = ({ userObj }) => {
 
     const [nweets, setNweets] = useState([]);

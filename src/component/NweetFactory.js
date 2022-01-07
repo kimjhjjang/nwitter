@@ -73,18 +73,35 @@ const NweetFactory = ({userObj}) => {
 
     return (
         <form onSubmit={onSubmit} className="factoryForm">
+            {attachment && (
+                <div className="factoryForm__attachment">
+                    <img
+                        src={attachment}
+                        style={{
+                            backgroundImage: attachment,
+                        }}
+                        alt={userObj.text}
+                    />
+                    <div className="factoryForm__clear" onClick={onClearAttachment}>
+                        <span>Remove</span>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </div>
+                </div>
+            )}
+
             <div className="factoryInput__container">
                 <input
                     className="factoryInput__input"
                     value={nweet}
                     onChange={onChange}
                     type="text"
-                    placeholder="What's on your mind?"
+                    placeholder="글 작성하기"
                     maxLength={120}
                 />
                 <input type="submit" value="&rarr;" className="factoryInput__arrow" />
             </div>
-            <label for="attach-file" className="factoryInput__label">
+            
+            <label htmlFor="attach-file" className="factoryInput__label">
                 <span>Add photos</span>
                 <FontAwesomeIcon icon={faPlus} />
             </label>
@@ -97,20 +114,6 @@ const NweetFactory = ({userObj}) => {
                     opacity: 0,
                 }}
             />
-            {attachment && (
-                <div className="factoryForm__attachment">
-                    <img
-                        src={attachment}
-                        style={{
-                            backgroundImage: attachment,
-                        }}
-                    />
-                    <div className="factoryForm__clear" onClick={onClearAttachment}>
-                        <span>Remove</span>
-                        <FontAwesomeIcon icon={faTimes} />
-                    </div>
-                </div>
-            )}
 
         </form>
     );
