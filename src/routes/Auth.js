@@ -5,6 +5,13 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
 } from 'firebase/auth';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTwitter,
+  faGoogle,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Auth = () => {
 
@@ -26,12 +33,21 @@ const Auth = () => {
         }
     }
     return (
-        <div>
-            <h1>Auth!!</h1>
+        <div className="authContainer">
+            <FontAwesomeIcon
+        icon={faTwitter}
+        color={"#04AAFF"}
+        size="3x"
+        style={{ marginBottom: 30 }}
+      />
             <AuthForm />
-            <div>
-                <button name="google" onClick={onSocialClick}>Continue with google</button>
-                <button name="github" onClick={onSocialClick}>Continue with github</button>
+            <div className="authBtns">
+                <button onClick={onSocialClick} name="google" className="authBtn">
+                    Continue with Google <FontAwesomeIcon icon={faGoogle} />
+                </button>
+                <button onClick={onSocialClick} name="github" className="authBtn">
+                    Continue with Github <FontAwesomeIcon icon={faGithub} />
+                </button>
             </div>
         </div>
     )
